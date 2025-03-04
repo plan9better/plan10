@@ -8,6 +8,7 @@
     p7zip
     pnpm
     ffmpeg
+    google-cloud-sdk
 
     # od wojtka
     # zsh-powerlevel10k
