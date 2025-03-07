@@ -9,6 +9,7 @@
     pnpm
     ffmpeg
     ollama
+    google-cloud-sdk
 
     # od wojtka
     # zsh-powerlevel10k
