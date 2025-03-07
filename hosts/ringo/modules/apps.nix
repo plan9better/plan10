@@ -2,14 +2,15 @@
 
   environment.systemPackages = with pkgs; [
     neovim
-    git
     helix
     typescript-language-server
+    devenv
   ];
-  environment.variables.EDITOR = "hx";
+
 
   homebrew = {
-    enable = true;
+    # enable = true;
+    enable = false;
 
     onActivation = {
       autoUpdate = true;
@@ -45,8 +46,7 @@
       "windsurf"
       "steam"
       "obsidian"
-      # "firefox"
-      # "google-chrome"
+      "brave-browser"
     ];
   };
 }

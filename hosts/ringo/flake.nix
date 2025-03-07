@@ -22,7 +22,7 @@
     home-manager,
     ...
   }: let
-    username = "spike";
+    username = "patrykwojnarowski";
     gitusername = "plan9better";
     useremail = "plan9better@proton.me";
     system = "aarch64-darwin"; 

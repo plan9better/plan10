@@ -8,12 +8,15 @@
     p7zip
     pnpm
     ffmpeg
+    ollama
 
     # od wojtka
     # zsh-powerlevel10k
     meslo-lgs-nf
     nodejs_22
     typescript-language-server
+    bash-language-server
+    python312Packages.python-lsp-server
     skopeo
     rsync
     clickhouse

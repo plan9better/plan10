@@ -8,13 +8,13 @@
   home.activation.removeExistingGitconfig = lib.hm.dag.entryBefore ["checkLinkTargets"] ''
     rm -f ~/.gitconfig
   '';
+
   programs.gh = {
     enable = true;
   };
 
   programs.git = {
     enable = true;
-    lfs.enable = true;
 
     userName = gitusername;
     userEmail = useremail;
@@ -24,16 +24,9 @@
       push.autoSetupRemote = true;
     };
 
-    # signing = {
-    #   key = "xxx";
-    #   signByDefault = true;
-    # };
-
-    delta = {
-      enable = true;
-      options = {
-        features = "side-by-side";
-      };
+    signing = {
+       key = "63BC493CAAD72DCD";
+       signByDefault = true;
     };
 
     aliases = {
