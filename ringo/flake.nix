@@ -2,7 +2,7 @@
   description = "Nix for macOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -10,7 +10,7 @@
     };
 
     darwin = {
-      url = "github:lnl7/nix-darwin";
+      url = "github:lnl7/nix-darwin/d06cf70";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -25,9 +25,8 @@
     username = "patrykwojnarowski";
     gitusername = "plan9better";
     useremail = "plan9better@proton.me";
-    system = "aarch64-darwin"; 
+    system = "aarch64-darwin";
     hostname = "ringo";
-
     specialArgs =
       inputs
       // {
@@ -41,6 +40,7 @@
         ./modules/system.nix
         ./modules/apps.nix
         ./modules/host-users.nix
+        ./modules/ssh.nix
 
         # home manager
         home-manager.darwinModules.home-manager

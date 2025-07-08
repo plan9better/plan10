@@ -1,15 +1,14 @@
-{ pkgs, ... }:
-
-  ###################################################################################
-  #
-  #  macOS's System configuration
-  #
-  #  All the configuration options are documented here:
-  #    https://daiderd.com/nix-darwin/manual/index.html#sec-options
-  #  Incomplete list of macOS `defaults` commands :
-  #    https://github.com/yannbertrand/macos-defaults
-  #
-  ###################################################################################
+{pkgs, ...}:
+###################################################################################
+#
+#  macOS's System configuration
+#
+#  All the configuration options are documented here:
+#    https://daiderd.com/nix-darwin/manual/index.html#sec-options
+#  Incomplete list of macOS `defaults` commands :
+#    https://github.com/yannbertrand/macos-defaults
+#
+###################################################################################
 {
   nix.enable = false;
   system = {
@@ -23,7 +22,7 @@
 
     defaults = {
       menuExtraClock.Show24Hour = true;
-      
+
       dock = {
         autohide = true;
         show-recents = false;
@@ -39,7 +38,7 @@
       };
 
       trackpad = {
-        Clicking = true;  
+        Clicking = true;
         TrackpadRightClick = true;
       };
 
@@ -54,7 +53,7 @@
       # Customize settings that not supported by nix-darwin directly
       # see the source code of this project to get more undocumented options:
       #    https://github.com/rgcr/m-cli
-      # 
+      #
       # All custom entries can be found by running `defaults read` command.
       # or `defaults read xxx` to read a specific domain.
       CustomUserPreferences = {
@@ -103,8 +102,8 @@
       };
 
       loginwindow = {
-        GuestEnabled = false;  # disable guest user
-        SHOWFULLNAME = true;  # show full name in login window
+        GuestEnabled = false; # disable guest user
+        SHOWFULLNAME = true; # show full name in login window
       };
     };
 
@@ -112,23 +111,20 @@
     # the most important thing is to remap option key to alt key globally,
     # but it's not supported by macOS yet.
     keyboard = {
-      enableKeyMapping = true;  # enable key mapping so that we can use `option` as `control`
+      enableKeyMapping = true; # enable key mapping so that we can use `option` as `control`
 
       # NOTE: do NOT support remap capslock to both control and escape at the same time
-      remapCapsLockToControl = false;  # remap caps lock to control, useful for emac users
-      remapCapsLockToEscape  = true;   # remap caps lock to escape, useful for vim users
+      remapCapsLockToControl = false; # remap caps lock to control, useful for emac users
+      remapCapsLockToEscape = true; # remap caps lock to escape, useful for vim users
     };
   };
 
   # Add ability to used TouchID for sudo authentication
   security.pam.services.sudo_local.touchIdAuth = true;
 
-  # Create /etc/zshrc that loads the nix-darwin environment.
-  # this is required if you want to use darwin's default shell - zsh
- programs.zsh.enable = true;
- environment.shells = [
-   pkgs.zsh
- ];
+  # environment.shells = [
+  # pkgs.nushell
+  # ];
 
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";

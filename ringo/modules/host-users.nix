@@ -1,16 +1,17 @@
 {
+  pkgs,
   username,
   hostname,
   ...
-} @ args:
-{
+} @ args: {
   networking.hostName = hostname;
   networking.computerName = hostname;
   system.defaults.smb.NetBIOSName = hostname;
+  services.emacs.enable = true;
 
-  users.users."${username}" = {
-    home = "/Users/${username}";
-    description = username;
+  users.users.patrykwojnarowski = {
+    home = "/Users/patrykwojnarowski";
+    shell = pkgs.nushell;
   };
 
   nix.settings.trusted-users = [username];
