@@ -1,5 +1,7 @@
-{
+{pkgs, helix-plugins, ...}: {
   enable = true;
+  # to build this helix version you need macos???
+  package = if pkgs.stdenv.isDarwin then helix-plugins.packages."aarch64-darwin".default else pkgs.helix;
   languages.language-server = {
     golangci-lint-langserver = {
       command = "golangci-lint-langserver";
@@ -8,13 +10,20 @@
   };
   languages.language = [
     {
-      name = "typescript";
-      file-types = ["ts" "tsx"];
+      name = "javascript";
+      file-types = ["ts" "tsx" "js" "jsx"];
       auto-format = true;
       formatter = {
-        command = "pnpm";
-        args = ["exec" "prettier --parser" "typescript"];
+        command = "bunx";
+        args = ["prettier"];
       };
+      # required-root-patterns = ["bun.lock" "tsconfig.json"];
+    }
+    {
+      name = "clickhouse-sql";
+      file-types = ["chsql"];
+      scope = "source.clickhouse-sql";
+      language-servers = ["clickhouse-sql-lsp"];
     }
     {
       name = "json";
@@ -46,14 +55,6 @@
       };
     }
     {
-      name = "tsx";
-      auto-format = true;
-      formatter = {
-        command = "pnpm";
-        args = ["exec" "prettier --parser" "typescript"];
-      };
-    }
-    {
       name = "go";
       file-types = ["go"];
       auto-format = true;
@@ -72,10 +73,20 @@
         args = ["-in"];
       };
     }
+    {
+      name = "c";
+      file-types = ["c" "cpp" "h" "hpp"];
+      auto-format = true;
+      formatter = {
+        command = "clang-format";
+        args = [];
+      };
+    }
   ];
   settings = {
-    theme = "ao";
+    theme = "ayu_dark";
     editor = {
+      line-number = "relative";
       smart-tab = {
         enable = false;
       };

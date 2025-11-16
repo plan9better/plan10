@@ -5,12 +5,12 @@
     xz
     unzip
     p7zip
+    jot
+    less
 
     # lsp adjacent
     typescript-language-server
     bash-language-server
-    python312Packages.python-lsp-server
-    vscode-langservers-extracted
     jsonfmt
     nil
     alejandra
@@ -21,10 +21,11 @@
 
     # utils
     ripgrep
-    devenv
     cfssl
     jq
     fzf
+    typioca
+    nix-search-cli
     skopeo
     rsync
     nmap
@@ -33,9 +34,7 @@
     btop
     nh
     k9s
-    iproute2mac
-    glow
-    mods
+    tio
 
     # clients
     clickhouse
@@ -48,12 +47,17 @@
     gnupg
     qemu
     kubecolor
-  ];
+  ] ++ ( if pkgs.stdenv.isDarwin then [pkgs.iproute2mac] else []);
 
   programs = {
     direnv = {
+      # let
+      #   myDirenv = import ../direnv;
+      # in {
+      #   package = myDirenv.default;
       enable = true;
       nix-direnv.enable = true;
+      silent = true;
     };
 
     awscli = {

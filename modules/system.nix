@@ -122,9 +122,18 @@
   # Add ability to used TouchID for sudo authentication
   security.pam.services.sudo_local.touchIdAuth = true;
 
-  # environment.shells = [
-  # pkgs.nushell
-  # ];
+  environment.systemPackages = [
+    # pkgs.tailscale
+    pkgs.carapace
+    pkgs.fish
+    pkgs.zsh
+    pkgs.inshellisense
+
+    pkgs.wireguard-tools
+    pkgs.zerotierone
+    pkgs.google-cloud-sdk
+  ];
+  services.tailscale.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";

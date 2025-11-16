@@ -20,7 +20,11 @@
     ];
 
     casks = [
+      "postico"
+      "anki"
+      "little-snitch"
       "utm"
+      "element"
       "emacs"
       "ghostty"
       "slack"
