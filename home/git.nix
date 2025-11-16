@@ -35,7 +35,7 @@
       cm = "commit -m";
       ca = "commit -am";
       dc = "diff --cached";
-      amend = "commit --amend -m";
+      amend = "commit --amend";
       nuke = "reset --hard origin/master";
 
       update = "submodule update --init --recursive";
